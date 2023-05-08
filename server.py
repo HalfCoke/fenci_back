@@ -32,6 +32,9 @@ def edit_dict(word):
             f.write(str(word).lstrip('-'))
             f.write('\n')
         return '已增加停用词：' + str(word).lstrip('-')
+    with open('data/cus.txt', 'a', encoding='utf-8') as f:
+        f.write(str(word))
+        f.write('\n')
     jieba.add_word(word)
     return '已添加自定义词组：' + word
 
@@ -49,7 +52,7 @@ def get_stop():
 
 @app.route('/get_cus', methods=['GET'])
 def get_cus():
-    with open('data/cus.txt', encoding='utf-8') as f:
+    with open('data/cus.txt', 'r', encoding='utf-8') as f:
         cus_word = []
         line = f.readline()
         while line:

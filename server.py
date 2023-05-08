@@ -70,6 +70,11 @@ def reset_stop():
 
 @app.route('/reset', methods=['GET'])
 def reset_cus():
+    with open('data/cus.txt', 'r', encoding='utf-8') as f:
+        line = f.readline()
+        while line:
+            jieba.del_word(line)
+            line = f.readline()
     with open('data/cus.txt', 'w', encoding='utf-8') as f:
         f.write('')
     return '重置自定义词组'

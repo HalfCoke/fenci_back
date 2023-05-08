@@ -25,7 +25,7 @@ def upload_file():
     '''
 
 
-@app.route('/<word>', methods=['GET'])
+@app.route('/word/<word>', methods=['GET'])
 def edit_dict(word):
     if str(word).startswith('-'):
         with open('data/cus_stop.txt', 'a', encoding='utf-8') as f:
